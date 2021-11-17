@@ -9,69 +9,75 @@
 
 #### Dataset
 
-- [ ] Add datasets used to the `datasets/` folder
+- [X] Add datasets used to the `datasets/` folder
 
 #### Files
 
-- [ ] **Initial**: Add file to the `exercises/`  folder with the name `ex-1-intial.twbx` or `ex-1-intial.pbix`, depending if you are auditioning for a Tableau or Power BI course.
-- [ ] **Solution**: Add file to the `exercises/`  folder with the name `ex-1-sol.twbx` or `ex-1-sol.pbix`
+- [x] **Initial**: Add file to the `exercises/`  folder with the name `ex-1-intial.twbx` or `ex-1-intial.pbix`, depending if you are auditioning for a Tableau or Power BI course.
+- [x] **Solution**: Add file to the `exercises/`  folder with the name `ex-1-sol.twbx` or `ex-1-sol.pbix`
 
 #### Learning Objective
 
-*One measurable learning objective that this exercise assesses*
+Understanding the use of adding an Index to a table or grouped table.
 
 #### Context
 
-*3 - 4 sentence description of why it’s important to learn how to do this task (linking back to the learning objective). Explain how this would be used in a real-life situation. Why is it useful, what problem does it solve?*
+Using an index is one of the ways you can rank data when combined with the sorting function. This is especially useful when combined with the group by operation as it allows one to compare the overall ranking of a certain metric to the grouped ranking within its category. This will also serve as the introduction to reading and understanding M Language/M Code. 
 
 #### Steps to be executed by the student (max 6)
 
-*Each bulleted instruction is a complete sentence that describes a specific task.*
-
-- Step 1
-- Step 2
-- Step 3
-- ...
+- Sort the Table by *Units In Stock* (Descending) [Note the Formula that appears in the formula bar as it will come in handy later]
+- Add an Index Column (starting from 1) then, within the Formula Bar, change the name of the newly created column from *Index* to *OverallStockRank*
+- Use the GroupBy Operation, leaving the ProductName, ProductID, and UnitsInStock Columns ungrouped. Name the first aggregation *CategoryStock* with the Sum of *UnitsInStock*.
+- Add an Aggregation called *Grouped* and select the operation **All Rows** 
+- Sort the Grouped Table by *CategoryStock* (Descending)
+- Add an Index Column (starting from 1) then, within the Formula Bar, change the name of the newly created column from *Index* to *CategoryStockRank*
 
 #### Exercise question:
-*This is a question presented to learners to check if the steps above were properly completed. It can be a multiple choice question or a question with a 1-3 word answer. It is often not possible to check if all the steps are completed, in this case; the priority is to check that the learner meets the learning objective.*
+Which Category has the 4th Highest Stock Level?
+- Condiments
+- Beverages
+- **_Dairy Products_**
+- Confections
 
 #### End goal:
 
-*Add an image of the final visualization here.*
+![image](https://user-images.githubusercontent.com/56801313/142156083-6b5c99bf-4c45-4b5f-863f-3bb62b79bed0.png)
 
 ## 2nd VM Exercise
 
 #### Dataset
 
-- [ ] Add datasets used to the `datasets/` folder
+- [X] Add datasets used to the `datasets/` folder
 
 #### Files
 
-- [ ] **Initial**: Add file to the `exercises/`  folder with the name `ex-2-intial.twbx` or `ex-2-intial.pbix`, depending if you are auditioning for a Tableau or Power BI course.
-- [ ] **Solution**: Add file to the `exercises/`  folder with the name `ex-2-sol.twbx` or `ex-2-sol.pbix`
+- [X] **Initial**: Add file to the `exercises/`  folder with the name `ex-2-intial.twbx` or `ex-2-intial.pbix`, depending if you are auditioning for a Tableau or Power BI course.
+- [X] **Solution**: Add file to the `exercises/`  folder with the name `ex-2-sol.twbx` or `ex-2-sol.pbix`
 
 #### Learning Objective
 
-*One measurable learning objective that this exercise assesses*
+How to use Custom Columns to perform operations on grouped tables/rows. 
 
 #### Context
 
-*3 - 4 sentence description of why it’s important to learn how to do this task (linking back to the learning objective). Explain how this would be used in a real-life situation. Why is it useful, what problem does it solve?*
+Group By is a powerful data manipulation technique that can help with the engineering of new features/columns as well as the summarization of large datasets. Together with the Custom Columns feature of PowerBI you can also perform manipulation on the grouped rows resulting in some advanced transformations.
 
 #### Steps to be executed by the student (max 6)
 
-*Each bulleted instruction is a complete sentence that describes a specific task.*
-
-- Step 1
-- Step 2
-- Step 3
-- ...
+- Create a Custom Column named *SortedCategoryProduct*. The formula should use the [Table.Sort()](https://docs.microsoft.com/en-us/powerquery-m/table-sort) function, with the first argument being the [Grouped] column created earlier through the group by action. While the Second Parameter should be a collection {} containing the "UnitsInStock" Column as well as the Order.Descending argument.
+- Create a Custom Column named *RankedCategoryProduct*. The formula should use the [Table.AddIndexColumn()](https://docs.microsoft.com/en-us/powerquery-m/table-addindexcolumn) function, with the first argument being the [SortedCategoryProduct] column created in the earlier step. While the Second Parameter should be the name of the newly created column (*RankedCategoryProduct*), and the 3rd Argument should be 1 (the Starting Index). 
+- Remove the *Grouped* and *SortedCategoryProduct* Columns. 
+- Expand the *RankedCategoryProduct* column, selecting all fields except *CategoryName* and *CategoryID*
 
 #### Exercise question:
-*This is a question presented to learners to check if the steps above were properly completed. It can be a multiple choice question or a question with a 1-3 word answer. It is often not possible to check if all the steps are completed, in this case; the priority is to check that the learner meets the learning objective.*
+Which Product has a *CategoryStockRank* of 3 AND a *CategoryProductStockRank* of 3?
+- Raclette Courdavault
+- **_Louisiana Fiery Hot Pepper Sauce_**
+- Chef Anton's Cajun Seasoning
+- Gudbrandsdalsost
 
 #### End goal:
 
-*Add an image of the final visualization here.*
+![image](https://user-images.githubusercontent.com/56801313/142163335-d7ac472a-2e33-46d1-a29d-4546e507de86.png)
 
